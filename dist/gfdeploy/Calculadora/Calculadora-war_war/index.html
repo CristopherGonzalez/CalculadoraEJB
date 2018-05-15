@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                $.ajax({
+                    type: 'POST',
+                    url: 'Calculos',
+                    data: { numero_uno:$("#txt_numero_uno").val(),
+                            numero_dos:$("#txt_numero_dos").val()},
+                    success: function(response) {
+                        $("#div1").html(response);
+                    },
+                    error: function(response) {
+                        $("#div1").html(response);
+                    }
+                });
+               
+            });
+        });
+        </script>
+</head>
+    <body>
+        <div>
+            <input type="text" id="txt_numero_uno">
+            <input type="text" id="txt_numero_dos">
+            <button>Enviar EJB"</button>
+            <div id="div1"></div>
+        </div>
+    </body>
+</html>
