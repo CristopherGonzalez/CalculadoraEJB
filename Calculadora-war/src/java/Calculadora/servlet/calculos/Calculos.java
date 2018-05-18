@@ -36,8 +36,11 @@ public class Calculos extends HttpServlet {
             throws ServletException, IOException {
         int n_1, n_2;
         response.setContentType("text/html;charset=UTF-8");
-        String numero_uno = request.getParameter("numero_uno");
-        String numero_dos = request.getParameter("numero_dos");
+        String numero_uno = request.getParameter("operation");
+        
+        
+        
+        
         if(numero_uno == null || "".equals(numero_uno)){
             n_1 = 0;
         }else{

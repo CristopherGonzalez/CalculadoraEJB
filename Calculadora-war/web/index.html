@@ -10,7 +10,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script>
+        <script type="text/javascript">
         $(document).ready(function(){
             $("button").click(function(){
                 $.ajax({
@@ -27,15 +27,44 @@ and open the template in the editor.
                 });
                
             });
+            
         });
         </script>
 </head>
-    <body>
+<body>
         <div>
+            <script>
+            function click_number(e){
+                var txt_draw = document.getElementById("txt_numero_uno");
+                txt_draw.value = txt_draw.value + e.value;
+            }
+            function click_equals(e){
+                $.ajax({
+                    type: 'POST',
+                    url: 'Calculos',
+                    data: { operation :document.getElementById("txt_numero_uno").value},
+                    success: function(response) {
+                        $("#div1").html(response);
+                    },
+                    error: function(response) {
+                        $("#div1").html(response);
+                    }
+                });
+            }
+            </script>
             <input type="text" id="txt_numero_uno">
             <input type="text" id="txt_numero_dos">
             <button>Enviar EJB"</button>
+            <input type="button" value="1" name="btn_1" onclick="click_number(this);">
+            <input type="button" value="2" name="btn_2" onclick="click_number(this);">
+            <input type="button" value="3" name="btn_3" onclick="click_number(this);">
+            <input type="button" value="4" name="btn_4" onclick="click_number(this);">
+            <input type="button" value="=" name="btn_equal" onclick="click_equals(this);">
+            
             <div id="div1"></div>
         </div>
     </body>
 </html>
+
+
+
