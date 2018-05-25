@@ -13,6 +13,13 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class Calculos implements CalculosLocal {
+
+    /**
+     *
+     * @param numero_uno
+     * @param numero_dos
+     * @return
+     */
     @Override
     public int suma(int numero_uno, int numero_dos){
         return numero_uno + numero_dos;

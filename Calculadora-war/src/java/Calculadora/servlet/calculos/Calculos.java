@@ -6,8 +6,9 @@
 package Calculadora.servlet.calculos;
 
 import Calculadora.SessionBeans.Stateless.CalculosLocal;
+import ProcessTxt.SessionBeans.Stateless.ProcessTxtLocal;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +22,9 @@ import javax.servlet.http.HttpServletResponse;
 public class Calculos extends HttpServlet {
 
     @EJB
+    private ProcessTxtLocal processTxt;
+
+    @EJB
     private CalculosLocal calculos;
 
     /**
@@ -32,29 +36,21 @@ public class Calculos extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int n_1, n_2;
         response.setContentType("text/html;charset=UTF-8");
         String numero_uno = request.getParameter("operation");
-        
-        
-        
-        
         if(numero_uno == null || "".equals(numero_uno)){
             n_1 = 0;
         }else{
             n_1 = Integer.parseInt(numero_uno);
         }
-        if(numero_dos == null || "".equals(numero_dos)){
-            n_2 = 0;
-        }else{
-            n_2 = Integer.parseInt(numero_dos);
-        }
-        int resultado = calculos.suma(n_1,n_2);
+        List<String> lineas = processTxt.readFile("C:\\Users\\crist\\text.txt");
         response.setContentType("text/html");
         response.setHeader("Cache-Control", "no-cache");
-        response.getWriter().write("<h1>"+resultado+"</h1>");
+        response.getWriter().write("<h1></h1>");
         
     }
 
