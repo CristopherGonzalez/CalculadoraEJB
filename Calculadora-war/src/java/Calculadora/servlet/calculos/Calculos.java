@@ -23,6 +23,12 @@ public class Calculos extends HttpServlet {
     @EJB
     private CalculosLocal calculos;
 
+    
+    
+    
+    
+    
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
